@@ -1,0 +1,93 @@
+;-------------------------
+;-| WARIO by JtheSaltyy |-
+;-------------------------
+;   - CONSTANTS FILE -
+;-------------------------
+
+;================================
+
+[Data]
+life = 1090
+attack = 100
+defence = 100
+fall.defence_up = 52
+liedown.time = 57
+airjuggle = 15
+sparkno = -1
+guard.sparkno = S7001
+KO.echo = 0
+volume = 100
+IntPersistIndex = 0
+FloatPersistIndex = 0
+
+;================================
+
+[Size]
+xscale = 0.769420			
+yscale = 0.857420			
+ground.back = 15		
+ground.front = 15		
+air.back = 15			
+air.front = 15		
+height = 60			
+attack.dist = 160		
+proj.attack.dist = 90	
+proj.doscale = 0		   
+head.pos = 5, -80		
+mid.pos = 5, -48		
+shadowoffset = 0		
+draw.offset = 0,0		
+
+;================================
+
+[Velocity]
+walk.fwd  = 1.97	
+walk.back = -1.12
+run.fwd  = 7.44, -4.23		
+run.back = -7.99, -4.72			
+jump.neu = 0, -7.316 
+jump.back = -2.99  
+jump.fwd = 2.99    
+runjump.back = -4.47421875,-10.125
+runjump.fwd = 5.27421875,-10.125	
+
+;================================
+
+[Movement]
+airjump.num = 0		
+airjump.height = 28		
+yaccel = .395			
+stand.friction = .85		
+crouch.friction = .82
+air.gethit.groundrecover.ground.threshold = -20
+air.gethit.groundrecover.groundlevel = 10
+air.gethit.airrecover.threshold = -1
+air.gethit.airrecover.yaccel = 0.35
+
+;================================
+
+[Quotes]
+
+;=[ WARIO QUOTES ]=
+
+victory1 = "Im'ma Wario! Im'ma the winner!!"
+victory2 = "You want fun? Wario show you fun."
+victory3 = "Wah! What an easy battle."
+victory4 = "Hee, hee hee hee hee heeee!"
+victory5 = "Hahaha! Take that, loser!"
+victory6 = "Im'ma the winner! Wario win!"
+victory7 = "Need a lesson in getting good, loser?"
+victory8 = "Waaaaahahahahahahahahahaha!! That was lotsa fun!"
+victory9 = "How could you forget Wario's strength? You must be coo-coo crazy!"
+victory10 = "Waaahaahahaaaaahaaaaa!"
+
+;=[ SPECIAL QUOTES ]=
+
+;VS Mario
+victory11 = "It's about time I give you what you are owed, Mario. 25 years of deserved pay-back!"
+
+;VS Luigi
+victory12 = "Once a Waluigi clone, always a Waluigi clone."
+
+;VS Waluigi
+victory13 = "Hey, what's gotten into you, Waluigi? It's me, Wario!"

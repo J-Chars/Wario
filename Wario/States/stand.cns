@@ -1,0 +1,991 @@
+;-----------------------
+;-| DIO by JtheSaltyy |-
+;-----------------------
+;    - STAND FILE -
+;-----------------------
+
+;================================
+
+;====================[ DIO SUMMONS THE WORLD ]====================
+[Statedef 300]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+poweradd= 48 
+anim = 300
+ctrl = 0
+sprpriority = 2
+
+[State Voice]
+type = PlaySnd
+trigger1 = !Time
+value = 4, 12
+
+[State Voice]
+type = PlaySnd
+trigger1 = !Time
+value = 5, 6
+
+[State Velocity]
+type = VelSet
+trigger1 = Helper(10000), StateTime = 1
+trigger1 = Helper(10000), StateNo != 10000
+trigger1 = Helper(10000), StateNo != 10005
+x = 4.69
+ignorehitpause = 1
+persistent = 1
+
+[State The World]
+type = helper
+trigger1 = animelem = 2
+helpertype = normal
+stateno = 10000
+ID = 10000
+name = "z a   w a r u d o"
+postype = p1
+pos = 35, 0
+ownpal = 1
+pausemovetime = Var(50) * 99999
+
+[State ChangeState]
+type = ChangeState
+trigger1 = Command = "FF"
+trigger1 = Helper(10000), StateNo = 1001 || Helper(10000), StateNo = 1101
+trigger2 = AILevel && (Helper(10000), StateNo = 1001 || Helper(10000), StateNo = 1101) && Time = 11
+value = 100
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State ChangeState]
+type = ChangeState
+trigger1 = time > 4
+trigger1 = !NumHelper(10000)
+value = 0
+ctrl = 1
+ignorehitpause = 1
+persistent = 1
+
+;====================[ ZA WARUDO SUMMONED ]=========================
+[Statedef 10000]
+type    = S                     
+movetype= A              
+physics = S          
+juggle  = 1                  
+velset = 0,0                 
+ctrl = 0                      
+anim = 350                              
+sprpriority = 2    
+
+[State -2, Jab]
+type = VarSet
+trigger1 = !Time
+v = 12
+value = IfElse(Command = "holddown", 10400, 10200)
+ignorehitpause = 1
+persistent = 1
+
+[State -2, Strong]
+type = VarSet
+trigger1 = Command = "y"
+v = 12
+value = IfElse(Command = "holddown", 10410, 10210)
+ignorehitpause = 1
+persistent = 1
+
+[State -2, Heavy]
+type = VarSet
+trigger1 = Command = "z"
+v = 12
+value = IfElse(Command = "holddown", 10420, 10220)
+ignorehitpause = 1
+persistent = 1
+
+[State -2, Short]
+type = VarSet
+trigger1 = Command = "a"
+v = 12
+value = IfElse(Command = "holddown", 10430, 10230)
+ignorehitpause = 1
+persistent = 1
+
+[State -2, Forward]
+type = VarSet
+trigger1 = Command = "b"
+v = 12
+value = IfElse(Command = "holddown", 10440, 10240)
+ignorehitpause = 1
+persistent = 1
+
+[State -2, Roundhouse]
+type = VarSet
+trigger1 = Command = "c"
+v = 12
+value = IfElse(Command = "holddown", 10450, 10250)
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = !AnimTime 
+value = Var(12)
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+;====================[ ZA WARUDO RETRACTED ]=========================
+[Statedef 10005]
+type    = S                     
+movetype= A              
+physics = S          
+juggle  = 1                  
+velset = 0,0                 
+ctrl = 0                      
+anim = 375                             
+sprpriority = 2    
+
+[State Voice]
+type = PlaySnd
+trigger1 = !Time
+value = 5, 6
+
+[State End]
+type = DestroySelf
+trigger1 = !AnimTime
+ignorehitpause = 1
+persistent = 1
+
+;====================[ ZA WARUDO JAB ]=========================
+[Statedef 10200]
+type    = S                     
+movetype= A              
+physics = S          
+juggle  = 1                                  
+ctrl = 0                      
+anim = 301                                
+sprpriority = 2              
+
+[State Stand Cancel]
+Type = ChangeState
+Trigger1 	= Parent, StateNo = [3000, 3999]
+Value 		= 5650
+IgnoreHitPause 	= 1
+Persistent 	= 1
+
+[State Velocity]
+type = VelSet
+trigger1 = !Time
+x = 4.55
+
+[State Hurt]
+type = hitoverride
+trigger1 = 1
+time = -1
+attr = SCA, AA, AP, AT
+stateno = 5750
+ignorehitpause = 1
+
+[State HitBy]
+type = hitby
+trigger1 = 1
+time = -1
+value = SCA, NP, SP, HP
+ignorehitpause = 1
+
+[State Miss]
+type = hitdef
+trigger1 = numenemy
+trigger1 = (enemynear, stateno = [5070, 5071])
+attr = S, SP
+hitflag = 
+
+[State Hit]
+type = HitDef
+trigger1 = !Time
+attr = S, NA                 
+damage = 20, 0          
+animtype = Light  
+guardflag = MA             
+hitflag = MAF             
+priority = 2, Hit               
+pausetime = 7, 7              
+sparkno = -1           
+sparkxy = -10, -76            
+hitsound = S2,1               
+guardsound = S2,0         
+ground.type = High            
+ground.slidetime = 5           
+ground.hittime  = 11            
+ground.velocity = -4.49 
+guard.velocity = -7.58   
+air.type = High    
+airguard.velocity = -3, -2               
+air.velocity = -5, -2    
+air.hittime = 15      
+guard.sparkno = S7001
+palfx.time = 12 * Fvar(2)
+palfx.add = 100, 100, 100
+
+[State Sparks]
+type = helper
+trigger1 = MoveHit && NumTarget
+trigger1 = (Target, MoveType = H) && !(Target, Time)
+helpertype = Normal
+stateno = 7010
+ID = 7000
+name = "Spark"
+postype = p2
+pos = 9, Const(Size.Mid.Pos.Y) - 34
+ownpal = 1
+ignorehitpause = 1
+pausemovetime = -1
+
+[State Sound]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 0, 0
+
+[State AI]
+type = changestate
+trigger1 = AILevel && Movehit = 1
+value = ifelse(random > 500, 10400, 10210)
+ctrl = 0
+
+[State Variable]
+type = VarSet
+trigger1 = 1
+V = 12
+Value = Root, Var(12)
+
+[State End]
+type = ChangeState
+trigger1 = MoveHit 
+trigger1 = Command = "upper_x" || Command = "upper_y" || Command = "upper_z" 
+value = 1101
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = MoveHit 
+trigger1 = Command = "QCF_x" || Command = "QCF_y" || Command = "QCF_z" 
+value = 1001
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = MoveHit && Var(12) != 10200 && Var(12) != 10005
+value = Var(12)
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = anim = 301 && !animtime
+value = ifelse(Var(12) != 10005, Var(12), 10005)
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+;====================[ ZA WARUDO STRONG ]=========================
+[Statedef 10210]
+type    = S                     
+movetype= A              
+physics = S          
+juggle  = 1                                  
+ctrl = 0                      
+anim = 310                                
+sprpriority = 2              
+
+[State Stand Cancel]
+Type = ChangeState
+Trigger1 	= Parent, StateNo = [3000, 3999]
+Value 		= 5650
+IgnoreHitPause 	= 1
+Persistent 	= 1
+
+[State Variable]
+type = VarSet
+trigger1 = 1
+V = 12
+Value = Root, Var(12)
+
+[State Close Animation]
+type = ChangeAnim
+trigger1 = !Time && P2BodyDist X < 15
+value = 311
+ignorehitpause = 1
+persistent = 1
+
+[State Velocity]
+type = VelSet
+trigger1 = !Time
+x = 4.55
+
+[State Hurt]
+type = hitoverride
+trigger1 = 1
+time = -1
+attr = SCA, AA, AP, AT
+stateno = 5750
+ignorehitpause = 1
+
+[State HitBy]
+type = hitby
+trigger1 = 1
+time = -1
+value = SCA, NP, SP, HP
+ignorehitpause = 1
+
+[State Miss]
+type = hitdef
+trigger1 = numenemy
+trigger1 = (enemynear, stateno = [5070, 5071])
+attr = S, SP
+hitflag = 
+
+[State Hit]
+type = HitDef
+trigger1 = !Time
+attr = S, NA                 
+damage = 45, 0          
+animtype = Medium
+guardflag = MA             
+hitflag = MAF             
+priority = 2, Hit               
+pausetime = 7, 7              
+sparkno = -1           
+sparkxy = -10, -76            
+hitsound = S2,2               
+guardsound = S2,0         
+ground.type = High            
+ground.slidetime = 5           
+ground.hittime  = 11            
+ground.velocity = -4.49 
+guard.velocity = -7.58   
+air.type = High    
+airguard.velocity = -3, -2               
+air.velocity = -5, -2    
+air.hittime = 15      
+guard.sparkno = S7001
+palfx.time = 12 * Fvar(2)
+palfx.add = 100, 100, 100
+
+[State AI]
+type = changestate
+trigger1 = AILevel && Movehit = 1
+value = 10220
+ctrl = 0
+
+[State Sparks]
+type = helper
+trigger1 = MoveHit && NumTarget
+trigger1 = (Target, MoveType = H) && !(Target, Time)
+helpertype = Normal
+stateno = 7010
+ID = 7000
+name = "Spark"
+postype = p2
+pos = 9, Const(Size.Mid.Pos.Y) - 34
+ownpal = 1
+ignorehitpause = 1
+pausemovetime = -1
+
+[State Sound]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 0, 0
+
+[State AI]
+type = changestate
+trigger1 = AILevel && Movehit = 1
+value = 10410
+ctrl = 0
+
+[State Variable]
+type = VarSet
+trigger1 = 1
+V = 12
+Value = Root, Var(12)
+
+[State End]
+type = ChangeState
+trigger1 = MoveHit 
+trigger1 = Command = "upper_x" || Command = "upper_y" || Command = "upper_z" 
+value = 1101
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = MoveHit 
+trigger1 = Command = "QCF_x" || Command = "QCF_y" || Command = "QCF_z" 
+value = 1001
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = Var(12) = 10220 || Var(12) = 10410 || Var(10) = 10420
+trigger1 = MoveHit && Var(12) != 10005
+value = Var(12)
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = !AnimTime
+value = IfElse(MoveContact, Var(12), 10005)
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+;====================[ ZA WARUDO HEAVY ]=========================
+[Statedef 10220]
+type    = S                     
+movetype= A              
+physics = S          
+juggle  = 1                                  
+ctrl = 0                      
+anim = 320                                
+sprpriority = 2              
+
+[State Stand Cancel]
+Type = ChangeState
+Trigger1 	= Parent, StateNo = [3000, 3999]
+Value 		= 5650
+IgnoreHitPause 	= 1
+Persistent 	= 1
+
+[State Width]
+type = Width
+trigger1 = 1
+value = 20, 0
+
+[State Close Animation]
+type = ChangeAnim
+trigger1 = !Time && P2BodyDist X < 15
+value = 321
+ignorehitpause = 1
+persistent = 1
+
+[State Velocity]
+type = VelSet
+trigger1 = !Time
+x = 4.55
+
+[State Hurt]
+type = hitoverride
+trigger1 = 1
+time = -1
+attr = SCA, AA, AP, AT
+stateno = 5750
+ignorehitpause = 1
+
+[State HitBy]
+type = hitby
+trigger1 = 1
+time = -1
+value = SCA, NP, SP, HP
+ignorehitpause = 1
+
+[State Miss]
+type = hitdef
+trigger1 = numenemy
+trigger1 = (enemynear, stateno = [5070, 5071])
+attr = S, SP
+hitflag = 
+
+[State Hit]
+type = HitDef
+trigger1 = !Time
+attr = S, NA                 
+damage = 69, 0          
+animtype = Heavy  
+guardflag = MA             
+hitflag = MAF             
+priority = 2, Hit               
+pausetime = 7, 7              
+sparkno = -1           
+sparkxy = -10, -76            
+hitsound = S2, 3               
+guardsound = S2, 0         
+ground.type = High            
+ground.slidetime = 5           
+ground.hittime  = 11            
+ground.velocity = -4.49 
+guard.velocity = -7.58   
+air.type = High    
+airguard.velocity = -3, -2               
+air.velocity = -5, -2    
+air.hittime = 15      
+guard.sparkno = S7001
+palfx.time = 12 * Fvar(2)
+palfx.add = 100, 100, 100
+
+[State AI]
+type = changestate
+trigger1 = AILevel && Movehit = 1
+value = 1005
+ctrl = 0
+
+[State Sparks]
+type = helper
+trigger1 = MoveHit && NumTarget
+trigger1 = (Target, MoveType = H) && !(Target, Time)
+helpertype = Normal
+stateno = 7010
+ID = 7000
+name = "Spark"
+postype = p2
+pos = 9, Const(Size.Mid.Pos.Y) - 34
+ownpal = 1
+ignorehitpause = 1
+pausemovetime = -1
+
+[State Sound]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 0, 0
+
+[State Variable]
+type = VarSet
+trigger1 = 1
+V = 12
+Value = Root, Var(12)
+
+[State End]
+type = ChangeState
+trigger1 = MoveHit 
+trigger1 = Command = "upper_x" || Command = "upper_y" || Command = "upper_z" 
+value = 1101
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = MoveHit 
+trigger1 = Command = "QCF_x" || Command = "QCF_y" || Command = "QCF_z" 
+value = 1001
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = !AnimTime 
+value = IfElse(MoveContact, Var(12), 10005)
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+;====================[ ZA WARUDO CROUCHING JAB ]=========================
+[Statedef 10400]
+type    = S                     
+movetype= A              
+physics = S          
+juggle  = 1                                  
+ctrl = 0                      
+anim = 500                                
+sprpriority = 2              
+
+[State Stand Cancel]
+Type = ChangeState
+Trigger1 	= Parent, StateNo = [3000, 3999]
+Value 		= 5650
+IgnoreHitPause 	= 1
+Persistent 	= 1
+
+[State Velocity]
+type = VelSet
+trigger1 = !Time
+x = 4.55
+
+[State Hurt]
+type = hitoverride
+trigger1 = 1
+time = -1
+attr = SCA, AA, AP, AT
+stateno = 5750
+ignorehitpause = 1
+
+[State HitBy]
+type = hitby
+trigger1 = 1
+time = -1
+value = SCA, NP, SP, HP
+ignorehitpause = 1
+
+[State Miss]
+type = hitdef
+trigger1 = numenemy
+trigger1 = (enemynear, stateno = [5070, 5071])
+attr = S, SP
+hitflag = 
+
+[State Hit]
+type = HitDef
+trigger1 = !Time
+attr = C, NA                 
+damage = 20, 0          
+animtype = Light  
+guardflag = MA             
+hitflag = MAF             
+priority = 2, Hit               
+pausetime = 7, 7              
+sparkno = -1           
+sparkxy = -10, -76            
+hitsound = S2, 1               
+guardsound = S2, 0         
+ground.type = High            
+ground.slidetime = 5           
+ground.hittime  = 11            
+ground.velocity = -4.49 
+guard.velocity = -7.58   
+air.type = High    
+airguard.velocity = -3, -2               
+air.velocity = -5, -2    
+air.hittime = 15      
+guard.sparkno = S7001
+palfx.time = 12 * Fvar(2)
+palfx.add = 100, 100, 100
+
+[State AI]
+type = changestate
+trigger1 = AILevel && Movehit = 1
+value = 10410
+ctrl = 0
+
+[State Sparks]
+type = helper
+trigger1 = MoveHit && NumTarget
+trigger1 = (Target, MoveType = H) && !(Target, Time)
+helpertype = Normal
+stateno = 7010
+ID = 7000
+name = "Spark"
+postype = p2
+pos = 9, Const(Size.Mid.Pos.Y) + 12
+ownpal = 1
+ignorehitpause = 1
+pausemovetime = -1
+
+[State Sound]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 0, 0
+
+[State Variable]
+type = VarSet
+trigger1 = 1
+V = 12
+Value = Root, Var(12)
+
+[State End]
+type = ChangeState
+trigger1 = Var(12) != 10200 && Var(12) != 10400
+trigger1 = MoveHit && Var(12) != 10005
+value = Var(12)
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = MoveHit 
+trigger1 = Command = "upper_x" || Command = "upper_y" || Command = "upper_z" 
+value = 1101
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = MoveHit 
+trigger1 = Command = "QCF_x" || Command = "QCF_y" || Command = "QCF_z" 
+value = 1001
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = !AnimTime 
+value = IfElse(MoveContact, Var(12), 10005)
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+;====================[ ZA WARUDO CROUCHING STRONG ]=========================
+[Statedef 10410]
+type    = S                     
+movetype= A              
+physics = S          
+juggle  = 1                                  
+ctrl = 0                      
+anim = 510                                
+sprpriority = 2              
+
+[State Stand Cancel]
+Type = ChangeState
+Trigger1 	= Parent, StateNo = [3000, 3999]
+Value 		= 5650
+IgnoreHitPause 	= 1
+Persistent 	= 1
+
+[State Velocity]
+type = VelSet
+trigger1 = !Time
+x = 4.55
+
+[State Hurt]
+type = hitoverride
+trigger1 = 1
+time = -1
+attr = SCA, AA, AP, AT
+stateno = 5750
+ignorehitpause = 1
+
+[State HitBy]
+type = hitby
+trigger1 = 1
+time = -1
+value = SCA, NP, SP, HP
+ignorehitpause = 1
+
+[State Miss]
+type = hitdef
+trigger1 = numenemy
+trigger1 = (enemynear, stateno = [5070, 5071])
+attr = S, SP
+hitflag = 
+
+[State Hit]
+type = HitDef
+trigger1 = !Time
+attr = C, NA                 
+damage = 45, 0          
+animtype = Medium  
+guardflag = MA             
+hitflag = MAF             
+priority = 2, Hit               
+pausetime = 7, 7              
+sparkno = -1           
+sparkxy = -10, -76            
+hitsound = S2, 2               
+guardsound = S2, 0         
+ground.type = High            
+ground.slidetime = 5           
+ground.hittime  = 11            
+ground.velocity = -4.49 
+guard.velocity = -7.58   
+air.type = High    
+airguard.velocity = -3, -2               
+air.velocity = -5, -2    
+air.hittime = 15      
+guard.sparkno = S7001
+palfx.time = 12 * Fvar(2)
+palfx.add = 100, 100, 100
+
+[State AI]
+type = changestate
+trigger1 = AILevel && Movehit = 1
+value = ifelse(random > 300, 1101, 10420)
+ctrl = 0
+
+[State Sparks]
+type = helper
+trigger1 = MoveHit && NumTarget
+trigger1 = (Target, MoveType = H) && !(Target, Time)
+helpertype = Normal
+stateno = 7010
+ID = 7000
+name = "Spark"
+postype = p2
+pos = 9, Const(Size.Mid.Pos.Y) + 12
+ownpal = 1
+ignorehitpause = 1
+pausemovetime = -1
+
+[State Sound]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 0, 0
+
+[State Variable]
+type = VarSet
+trigger1 = 1
+V = 12
+Value = Root, Var(12)
+
+[State End]
+type = ChangeState
+trigger1 = MoveHit 
+trigger1 = Command = "upper_x" || Command = "upper_y" || Command = "upper_z" 
+value = 1101
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = MoveHit 
+trigger1 = Command = "QCF_x" || Command = "QCF_y" || Command = "QCF_z" 
+value = 1001
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = Var(12) > 10410
+trigger1 = MoveHit && Var(12) != 10005
+value = Var(12)
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = !AnimTime 
+value = IfElse(MoveContact, Var(12), 10005)
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+;====================[ ZA WARUDO CROUCHING HEAVY ]=========================
+[Statedef 10420]
+type    = S                     
+movetype= A              
+physics = S          
+juggle  = 1                                  
+ctrl = 0                      
+anim = 520                                
+sprpriority = 2              
+
+[State Stand Cancel]
+Type = ChangeState
+Trigger1 	= Parent, StateNo = [3000, 3999]
+Value 		= 5650
+IgnoreHitPause 	= 1
+Persistent 	= 1
+
+[State Velocity]
+type = VelSet
+trigger1 = !Time
+x = 4.55
+
+[State Hurt]
+type = hitoverride
+trigger1 = 1
+time = -1
+attr = SCA, AA, AP, AT
+stateno = 5750
+ignorehitpause = 1
+
+[State HitBy]
+type = hitby
+trigger1 = 1
+time = -1
+value = SCA, NP, SP, HP
+ignorehitpause = 1
+
+[State Miss]
+type = hitdef
+trigger1 = numenemy
+trigger1 = (enemynear, stateno = [5070, 5071])
+attr = S, SP
+hitflag = 
+
+[State Hit]
+type = HitDef
+trigger1 = !Time
+attr = C, NA                 
+damage = 69, 0          
+animtype = Heavy 
+guardflag = MA             
+hitflag = MAF             
+priority = 2, Hit               
+pausetime = 7, 7              
+sparkno = -1           
+sparkxy = -10, -76            
+hitsound = S2, 3               
+guardsound = S2, 0         
+ground.type = Trip           
+ground.slidetime = 5           
+ground.hittime  = 11            
+ground.velocity = -4.49 
+guard.velocity = -7.58   
+air.type = Trip   
+airguard.velocity = -3, -2               
+air.velocity = -5, -2    
+air.hittime = 15      
+guard.sparkno = S7001
+palfx.time = 12 * Fvar(2)
+palfx.add = 100, 100, 100
+
+[State Sparks]
+type = helper
+trigger1 = MoveHit && NumTarget
+trigger1 = (Target, MoveType = H) && !(Target, Time)
+helpertype = Normal
+stateno = 7010
+ID = 7000
+name = "Spark"
+postype = p2
+pos = 9, Const(Size.Mid.Pos.Y) + 12
+ownpal = 1
+ignorehitpause = 1
+pausemovetime = -1
+
+[State Sound]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = 0, 0
+
+[State AI]
+type = changestate
+trigger1 = AILevel && Movehit = 1
+value = 10420
+ctrl = 0
+
+[State End]
+type = ChangeState
+trigger1 = MoveHit 
+trigger1 = Command = "upper_x" || Command = "upper_y" || Command = "upper_z" 
+value = 1101
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State End]
+type = ChangeState
+trigger1 = MoveHit 
+trigger1 = Command = "QCF_x" || Command = "QCF_y" || Command = "QCF_z" 
+value = 1001
+ctrl = 0
+ignorehitpause = 1
+persistent = 1
+
+[State Variable]
+type = VarSet
+trigger1 = 1
+V = 12
+Value = Root, Var(12)
+
+[State End]
+type = ChangeState
+trigger1 = !AnimTime 
+value = IfElse(MoveContact, Var(12), 10005)
+ctrl = 0
+ignorehitpause = 1
+persistent = 1

@@ -1,0 +1,199 @@
+===================
+Wario by JtheSaltyy
+===================
+||
+||
+||
+=========
+MOVELIST
+=========
+||
+====
+KEY
+====
+D - Down
+U - Up
+L - Left
+R - Right
+DF - Down+Forward
+DB - Down+Back
+LP - Light Punch
+MP - Medium Punch
+HP - Hard Punch
+LK - Light Kick
+MK - Medium Kick
+HK - Hard Kick
+P - Punch
+K - Kick
+2P - 2 Punches (i.e. LP+MP, LP+HP, MP+HP)
+2K - 2 Kicks (i.e. LK+MK, LK+HK, MK+HK)
+
+===========
+DISCLAIMER
+===========
+
+-Before reading the movelist, always assume that all the moves are ground only.
+
+===========
+MOVE GUIDE
+===========
+
+========
+SYSTEM
+========
+
+Move: Dodge
+Description: Wario quickly dodges any attacks.
+Command: LP + LK
+PROPERTIES
+-Invulnerability for 4 frames
+
+Move: Evade
+Description: Wario rolls out of any attacks. He can be thrown however.
+Command: LP + LK + F for Forward Roll or B for Backward Roll
+PROPERTIES
+-Invulnerability for the entire animation
+-Not invincible to throws
+
+Move: Power Charge
+Description: Wario slowly charges his power
+Command: (Hold) MP + MK
+PROPERTIES
+-None
+
+Move: Alpha Counter
+Description: Wario counters an attack with his own, which is a guarunteed hit.
+Command (While in Block Stun) MP+MK
+Meter Cost: 1/2
+PROPERTIES
+-None
+
+Move: Advancing Guard
+Description: Wario pushes the opponent away and returns the game to neutral
+Command: (While in Block Stun) LP + LK
+PROPERTIES
+-None
+
+Move: Custom Combo
+Description: Wario can cancel any move he wants.
+Command: HP + HK
+Meter Cost: What ever the meter is at
+PROPERTIES
+-Can cancel any move into itself or others
+-Temporary Effect
+-Cannot activate MAX Mode, use EX Moves, or supers
+-Cannot activate if MAX Mode is already active
+-Duration is affected by how much meter Wario has before using Custom Combo
+
+=========
+THROWS
+=========
+
+Move: Shoulder Bash
+Description: Wario tries to grab, and if he does, he shoulder tackles them away.
+PROPERTIES
+-Unblockable
+-Hard Knockdown
+
+Move: Drop-Kick
+Description: Wario tries to grab, and if he does, he kicks his opponent 2 times, with the 2nd sending them flying.
+PROPERTIES
+-Unblockable
+-Hard Knockdown, Recoverable
+
+=========
+SPECIALS
+=========
+
+Move: Fire Shot
+Desciption: Wario shoots a fireball out of his dragon head.
+Command: D, DF, F, P (2P for EX)
+PROPERTIES
+-Soft Knockdown (HP Only)
+
+Move: Super Spring
+Description: Wario transforms his lower body into a spring and shoots upwards, like a Shoryuken
+Command: F, D, DF, P (2P for EX)
+PROPERTIES
+-Anti-Air
+-Hard Knockdown
+
+Move: Hyper Punch
+Description: Wario lunges forward with his enflamed fist in the manner of a Burn Knuckle
+Command: F, D, DF, K (2K for EX)
+PROPERTIES
+-Hard Knockdown
+-Air Okay
+
+Move: Shoulder Tackle
+Description: Wario lunges forward with his shoulder outward to damage his opponent
+Command: D, DB, B, P (2P for EX)
+PROPERTIES
+-Hard Knockdown, No Recovery (HP Only)
+-Wall Bounce (EX Only)
+-Magic String Cancellable (L.Tackle-M.Tackle-H.Tackle-EX.Tackle)
+
+========
+SUPERS
+========
+
+Move: Hyper Punch Rave
+Description: Wario does a Hyper Punch. If it connects, he beats his opponent before bashing them with his shoulder.
+Command: D, DF, F, D, DF, F, P
+Meter Cost: 1
+PROPERTIES
+-Wall Bounce
+-Hard Knockdown, No Recovery
+-Air Okay
+
+Move: Triple Fire Shot
+Description: Wario shoots 3 fireballs out of his dragon head.
+Command: D, DF, F, D, DF, F, K
+Meter Cost: 1
+PROPERTIES
+-Hard Knockdown, No Recovery
+
+Move: Shoulder Charge
+Description: Wario grows extra buff and runs forward. If he runs into a wall, he is stunned for a short time.
+Command: D, DB, B, D, DB, B, P
+Meter Cost: 2
+PROPERTIES
+-Hard Knockdown, No Recovery
+
+Move: The Greatest Achievement
+Description: Hey, guys, Wario here. Oh my goodness my stomach is rolling from eating that onion,
+and rotten garlics, oh my goodness. Okay guys this is episode two, and right now guys
+I want to show you my living room, ahh, my hallway I guess, oh my goodness my stomach.
+But um... Look, guys, look. It's one of my greatest achievement Wario Land 4 on the
+GameBoy Advance. Hahaha! And look guys, look. The Virtual Boy! Ultimate classic system,
+uhh, guys do you remember Wario Land? Incredible, incredible. Oh my goodness my stomach,
+guys... My stomach, the bathroom is not far away... OH MY GOODNESS, I feel... The...
+The stuff coming down my buttocks! Oh, my goodness, aah *IMMENSE FLATULENCE* ooooaaahh...
+I got to get to the door... I just got to... Got to get to the door... Bye, guys, bye!
+Don't forget to subscrible! And then next episode will be with me using the toilet...
+OH MY GOODNESS GUYS IT'S RUNNING DOWN MY BUTTOCKS AAAH I GOT TO GET TO THE BATHROOM IT'S
+COMING IT'S COMING AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHH!!!
+Command: D, DF, F, D, DB, B, D, DF, F, P
+Meter Cost: 3
+PROPERTIES
+-MAX Super
+
+==========
+SUPER FART
+==========
+This move works just like his down B in Super Smash Bros. If he hits his opponent, or gets hit by his opponent, then he
+slowly charges his Fart Meter. You can perform the super fart any time you want, but the meter you've built up to that
+point dictates the strength of the fart, with the weakest dealing no damage at all, to the strongest dealing 50% damage.
+If you perform the super fart, the entire fart meter will be gone. Once you have reached the maximum amount of meter, 
+Wario will flash brown like he did in Smash.
+
+The fart meter can't be seen normally, but by double tapping down, you are able to view your meter, and by tapping down
+twice once more, the meter disappears.
+
+Move: Super Fart
+Command: D, D, D, P
+
+==================
+
+i hope you enjoy!
+
